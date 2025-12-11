@@ -1,0 +1,144 @@
+{
+  "ironCondor": {
+    "entry": {
+      "minIVPercentile": 50,
+      "maxIVPercentile": 90,
+      "minDTE": 30,
+      "maxDTE": 45,
+      "allowedDaysOfWeek": [1, 2, 3, 4],
+      "minTimeOfDay": "10:00",
+      "maxTimeOfDay": "15:00",
+      "deltaRange": {
+        "min": -0.2,
+        "max": 0.2
+      },
+      "minCreditRatio": 0.3
+    },
+    "exit": {
+      "profitTarget": 0.5,
+      "stopLoss": 0.75,
+      "maxDTE": 7,
+      "daysBeforeExpiration": [7, 5, 3],
+      "trailingStop": {
+        "activationLevel": 0.4,
+        "trailAmount": 0.15
+      },
+      "timeBasedExits": {
+        "maxHoldingPeriod": 30,
+        "exitOnFriday": false
+      }
+    },
+    "roll": {
+      "rollAtDTE": 7,
+      "rollToDTE": 30,
+      "requireCredit": true,
+      "minRollCredit": 0.1,
+      "adjustStrikes": true,
+      "strikeAdjustment": {
+        "targetDelta": 0.16
+      },
+      "maxRolls": 3,
+      "closeIfNoCredit": true
+    }
+  },
+  "creditSpread": {
+    "entry": {
+      "minIVPercentile": 40,
+      "maxIVPercentile": 90,
+      "minDTE": 30,
+      "maxDTE": 60,
+      "allowedDaysOfWeek": [1, 2, 3, 4, 5],
+      "minTimeOfDay": "09:45",
+      "maxTimeOfDay": "15:30",
+      "deltaRange": {
+        "min": -0.35,
+        "max": 0.35
+      },
+      "minCreditRatio": 0.25
+    },
+    "exit": {
+      "profitTarget": 0.5,
+      "stopLoss": 0.8,
+      "maxDTE": 5,
+      "deltaBreach": {
+        "threshold": 0.5,
+        "direction": "above"
+      },
+      "trailingStop": {
+        "activationLevel": 0.3,
+        "trailAmount": 0.1
+      }
+    },
+    "roll": {
+      "rollAtDTE": 5,
+      "rollToDTE": 30,
+      "requireCredit": true,
+      "minRollCredit": 0.15,
+      "adjustStrikes": true,
+      "strikeAdjustment": {
+        "direction": "auto",
+        "strikeCount": 1
+      },
+      "maxRolls": 2,
+      "closeIfNoCredit": true
+    }
+  },
+  "coveredCall": {
+    "entry": {
+      "minDTE": 21,
+      "maxDTE": 45,
+      "allowedDaysOfWeek": [1, 2, 3],
+      "deltaRange": {
+        "min": 0.2,
+        "max": 0.4
+      },
+      "minCreditRatio": 0.02
+    },
+    "exit": {
+      "profitTarget": 0.8,
+      "maxDTE": 3,
+      "daysBeforeExpiration": [3, 1],
+      "timeBasedExits": {
+        "exitOnFriday": true
+      }
+    },
+    "roll": {
+      "rollAtDTE": 3,
+      "rollToDTE": 21,
+      "requireCredit": true,
+      "adjustStrikes": false,
+      "maxRolls": 5,
+      "closeIfNoCredit": false
+    }
+  },
+  "wheeling": {
+    "entry": {
+      "minIVPercentile": 30,
+      "minDTE": 14,
+      "maxDTE": 45,
+      "deltaRange": {
+        "min": 0.3,
+        "max": 0.4
+      },
+      "minCreditRatio": 0.015
+    },
+    "exit": {
+      "profitTarget": 0.9,
+      "maxDTE": 1,
+      "timeBasedExits": {
+        "exitOnFriday": true
+      }
+    },
+    "roll": {
+      "rollAtDTE": 1,
+      "rollToDTE": 14,
+      "requireCredit": false,
+      "adjustStrikes": true,
+      "strikeAdjustment": {
+        "targetDelta": 0.3
+      },
+      "maxRolls": 10,
+      "closeIfNoCredit": false
+    }
+  }
+}

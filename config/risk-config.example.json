@@ -1,0 +1,102 @@
+{
+  "maxTotalRisk": 50000,
+  "maxOpenPositions": 10,
+  "defaultRisk": {
+    "maxPositionSize": 5,
+    "maxPortfolioAllocation": 0.05,
+    "minDaysToExpiration": 30,
+    "maxDaysToExpiration": 60,
+    "delta": {
+      "min": -0.3,
+      "max": 0.3
+    },
+    "greeks": {
+      "maxGamma": 0.1,
+      "maxTheta": 50,
+      "maxVega": 100
+    },
+    "ivPercentile": {
+      "min": 40,
+      "max": 90
+    },
+    "minCredit": 0.2,
+    "maxSpreadWidth": 10
+  },
+  "globalUnderlyingFilters": {
+    "blockedSymbols": [],
+    "minPrice": 10,
+    "maxPrice": 500,
+    "minVolume": 1000000,
+    "minMarketCap": 1000000000
+  },
+  "strategies": [
+    {
+      "name": "iron-condor",
+      "enabled": true,
+      "risk": {
+        "maxPositionSize": 3,
+        "maxPortfolioAllocation": 0.03,
+        "minDaysToExpiration": 30,
+        "maxDaysToExpiration": 45,
+        "delta": {
+          "min": -0.2,
+          "max": 0.2
+        },
+        "greeks": {
+          "maxGamma": 0.05,
+          "maxTheta": 30,
+          "maxVega": 80
+        },
+        "ivPercentile": {
+          "min": 50,
+          "max": 90
+        },
+        "minCredit": 0.3,
+        "maxSpreadWidth": 5
+      },
+      "underlyingFilters": {
+        "allowedSymbols": ["SPY", "QQQ", "IWM", "DIA"],
+        "minVolume": 50000000
+      },
+      "parameters": {
+        "callSpreadWidth": 5,
+        "putSpreadWidth": 5,
+        "targetDelta": 0.16
+      }
+    },
+    {
+      "name": "credit-spread",
+      "enabled": true,
+      "risk": {
+        "maxPositionSize": 5,
+        "maxPortfolioAllocation": 0.05,
+        "minDaysToExpiration": 30,
+        "maxDaysToExpiration": 60,
+        "delta": {
+          "min": -0.35,
+          "max": 0.35
+        },
+        "greeks": {
+          "maxGamma": 0.08,
+          "maxTheta": 40,
+          "maxVega": 90
+        },
+        "ivPercentile": {
+          "min": 40,
+          "max": 90
+        },
+        "minCredit": 0.25,
+        "maxSpreadWidth": 10
+      },
+      "underlyingFilters": {
+        "minPrice": 20,
+        "maxPrice": 300,
+        "minVolume": 5000000
+      },
+      "parameters": {
+        "spreadWidth": 5,
+        "targetDelta": 0.3
+      }
+    }
+  ]
+}
