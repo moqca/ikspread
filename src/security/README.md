@@ -136,18 +136,6 @@ logs.forEach(log => {
 });
 ```
 
-## Safe Logging
-
-Mask secrets in logs:
-
-```typescript
-import { maskSecret } from './security';
-
-const apiKey = 'sk_test_EXAMPLE_KEY_REPLACE_ME';
-console.log(`API Key: ${maskSecret(apiKey)}`);
-// Output: API Key: sk_l********************mnop
-```
-
 ## Security Best Practices
 
 1. **Never commit secrets**: Keep `.env` out of version control
